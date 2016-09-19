@@ -1,0 +1,256 @@
+@font-face {
+  font-family: 'code_pro_demoregular';
+  src: url('font/Amble-Light.ttf') format('truetype');
+}
+
+table, td{
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align:middle;
+  background-color: #f9f9f9;
+  white-space:nowrap;
+}
+
+.table-container table{
+  border: 1px solid black;	
+}
+
+.match-order th{
+	color:black;
+}
+
+.rank-table-row td{
+	border: 1px solid black;
+}
+.bracket-table-row .winner{
+  background-color: #7CFC00;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.table-container table{
+	width:500px;
+}
+
+th{
+  background-color: #333F8A;
+  color:#f9f9f9;
+}
+
+.icon{ 
+  border-radius:24px;
+  height:30px;
+  width:auto;
+}
+
+.winner{
+  background-color: #7CFC00;
+}
+
+.loser{
+  background-color:#FF0000;
+}
+a{
+  text-decoration:none;
+  color:black;
+}
+body{
+  background-image: url("src/3dsmashback.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color:gray;
+  text-align:center;
+  margin:0;
+  padding:0;
+  width:100%;
+}
+
+.table-container{
+
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 40px;
+  height: 100%;
+  display: table;
+}
+
+.section{
+  border-bottom-style:dashed;
+  border-bottom-color: inherit;
+  border-bottom-width: 1px;
+}
+
+.main-content{
+  width:900px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:65px;
+  background-color: #f9f9f9;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    font-family:'code_pro_demoregular';
+}
+
+.archive-heading{
+  text-align: left;
+  margin-left: 20%;
+}
+
+.table-map{
+  white-space: nowrap;
+}
+
+.table-mains{
+  width:auto;
+  white-space: nowrap;
+}
+
+.summary-heading{
+  margin-bottom: -15px;
+}
+
+.tournament-slot{
+  height:35px;
+  width: 110px;
+  display:table-cell;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+		
+td.tournament-slot{
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+td.player:hover > .pop-up{
+	display:block;
+}
+
+td.player{
+  border-top-left-radius:30px;
+  border-bottom-right-radius:30px;
+}
+
+.tournament-upper-slot{
+  border-bottom:1px solid black;
+  height:35px;
+  width: 110px;
+  display:table-cell;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+
+.tournament-middle-slot{
+  border-right:1px solid black;
+  height:35px;
+  width: 110px;
+  display:table-cell;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+
+.tournament-lower-slot{
+  border-right:1px solid black;
+  border-bottom:1px solid black;
+  height:35px;
+  width: 110px;
+  display:table-cell;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+
+.bracket{
+  margin:0 auto 50px auto;
+}
+
+.pop-up{
+  position:absolute;
+  width: 50px;
+  height: 50px;
+  background-color:red;
+  display: none;
+}
+
+.trophy{
+  height:30px;
+}
+
+.nav-bar{
+  top:0;
+  height:43px;
+  width:100%;
+  background-color:#333F8A;
+  position:fixed;
+  border-bottom:1px solid black;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  font-family:'code_pro_demoregular';
+}
+
+.nav-list{
+  list-style-type:none;
+  padding:0;
+  margin:0;
+  top:0;
+  left:50%;
+  margin-left:-450px;
+  overflow: hidden;
+  position:fixed;
+  background-color: #333F8A;
+
+}
+
+.nav-list > li {
+  float:left;
+  height:43px;
+  color:white;
+  border-right: 1px solid black;
+}
+
+.input-form{
+  margin:3px 10% 3px 0;
+  float:right;
+  height:35px;
+  color:gray;
+  background-color:white;
+  border: 1px solid black;
+}
+
+input{
+  height:35px;
+  margin:0;
+  padding:0;
+  border:0;
+  width:200px;
+}
+
+.nav-list a{
+  display:block;
+  color:black;
+  text-align:center;
+  color:#f9f9f9;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.list-element{
+  padding:14px 16px;
+}
+
+.nav-list a:hover{
+  background-color:#f9f9f9;
+  color:black;
+}
+
+.link:hover{
+  text-decoration:underline;
+}
+
+.project-m{
+  height: 39px;
+  width: auto;
+  padding:3px 10px;
+  border-left: 1px solid black;
+}
