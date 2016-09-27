@@ -2,10 +2,10 @@
 /*eslint-env browser, jquery*/
 
 
-$(document).ready(function(){  	
-    	var tableRowHTML ="";		
+$(document).ready(function(){
+    	var tableRowHTML ="";
 
-	
+
 		var playerSummaryHeader = "    <tr class=\"rank-table-row\">"+
      								"<th> <em>Players</em> </th>"+
     								"<th class=\"table-mains\"> <em>Mains </em></th>"+
@@ -15,38 +15,42 @@ $(document).ready(function(){
       								"<th><em> KO's </em></th>"+
       								"<th><em> Falls </em></th>"+
       								"<th><em> Elo </em></th>"+
-    								"</tr>";  
-		
+    								"</tr>";
+
 		var player = player_info.player_id[id];
 					tableRowHTML += "<tr id=\"" + id + "\""+ "class=\"rank-table-row\">"+
 									" <td> " +player_info.player_id[id].player_name + " </td> <td>";
 
-				for(var j = 0; j < player.mains.length; j++){
-						tableRowHTML += "<img class=\"icon\" src=\"../icons\\" + player.mains[j] + ".png\" alt=\"" + player.mains[j] + "\"/>";
-						if(j !== player.mains.length-1)
-							tableRowHTML += "";
-					}
-					tableRowHTML += "</td>"+
-									"<td> " + player.career_wins+ " </td>"+ //wins
-									"<td> " + player.career_losses+ "</td>"+ //losses
-									"<td> " + Math.floor(player.career_wins /(player.career_wins + player.career_losses)* 100) +"% </td>"+ //win percent
-									"<td> " + player.career_kos + "</td>"+ //kos
-									"<td> " + player.career_falls + "</td>"+//falls
-									"<td> " + player.elo + "</td> </tr>";
-				
+  var addPlayerInfo = function(){
+    for(var j = 0; j < player.mains.length; j++){
+        tableRowHTML += "<img class=\"icon\" src=\"../icons\\" + player.mains[j] + ".png\" alt=\"" + player.mains[j] + "\"/>";
+        if(j !== player.mains.length-1)
+          tableRowHTML += "";
+      }
+      tableRowHTML += "</td>"+
+              "<td> " + player.career_wins+ " </td>"+ //wins
+              "<td> " + player.career_losses+ "</td>"+ //losses
+              "<td> " + Math.floor(player.career_wins /(player.career_wins + player.career_losses)* 100) +"% </td>"+ //win percent
+              "<td> " + player.career_kos + "</td>"+ //kos
+              "<td> " + player.career_falls + "</td>"+//falls
+              "<td> " + player.elo + "</td> </tr>";
+  };
+
+
+
 
 				//console.log(rows[i-1]);
-			
+
 			var appendID = "#" + id + "-table";
 			$(appendID).append(playerSummaryHeader);
 			$(appendID).append(tableRowHTML);
-			
+
 			var matchHistHeader = "<tr class=\"rank-table-row\">"+
 								  "<th> <em> Winner </em> </th>"+
-								  "<th> <em> Character </em> </th>" + 
+								  "<th> <em> Character </em> </th>" +
 								  "<th> <em> KOs </em> </th>"+
 								  "<th> <em> Loser </em> </th>"+
-								  "<th> <em> Character </em> </th>" + 
+								  "<th> <em> Character </em> </th>" +
 								  "<th> <em> KOs </em> </th>"+
 								  "<th> <em> Map </em> </th>"+
 								  "<th> <em> Week Number </em> </th>";
@@ -82,7 +86,7 @@ $(document).ready(function(){
 			}
 		}
 	}
-	
 
-	
+
+
 });
