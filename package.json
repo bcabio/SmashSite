@@ -1,0 +1,26 @@
+{
+  "name": "node-js-sample",
+  "version": "0.2.0",
+  "description": "A sample Node.js app using Express 4",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "engines": {
+    "node": "^4.4.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonicfangs/SmashSite"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "author": "Brian Cabigon",
+  "license": "MIT"
+}

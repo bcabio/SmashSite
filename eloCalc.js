@@ -18,19 +18,23 @@ MongoClient.connect(url,function(err, db){
           console.log(err);
           else{
             if(result != null){
-              console.log(result);
+              //console.log(result);
               //console.log(result);
               var winnerTemp = result.winner_id;
               //console.log(result['winner_id']);
               var loserTemp = result.loser_id;
               //console.log(loserTemp);
-              // playerstuff.find({$or:[{'player_id':winnerTemp},{'player_id':loserTemp}]}).next(function(err, result){
-              //   console.log(result);
-              //   console.log("Week:" + j);
-              //   console.log("-----");
-                db.close();
-                db2.close();
-              // });
+              playerstuff.find({$or:[{'player_id':winnerTemp},{'player_id':loserTemp}]}).next(function(err, result){
+              console.log(result);
+              console.log("Week:" + j);
+              console.log("-----");
+
+              });
+              col.find({"week":1}).each(function(err, result){
+                console.log(result);
+              });
+              db.close();
+              db2.close();
             }
           }
       });
