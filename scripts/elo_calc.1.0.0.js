@@ -8,7 +8,7 @@ function matchNew(week_number, match_number){
 	var statRef = stats.week[week_number].match[match_number];
 	var m = [];
 	var winnerTemp = player_info.player_id[statRef.winner_id];
-	var loserTemp = player_info.player_id[statRef.loser_id];	
+	var loserTemp = player_info.player_id[statRef.loser_id];
 	//console.log(loserTemp.player_name + " elo " + loserTemp.elo);
 	//console.log(winnerTemp.player_name + " elo " + winnerTemp.elo);
 	var expectedScoreWinner = 1/(1+Math.pow(10,(loserTemp.elo-winnerTemp.elo)/400));
