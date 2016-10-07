@@ -26,11 +26,10 @@
   <div class="section">
     <div class="table-container">
       <ul>
-        <% for(var i = 1; i < elos.test.length; i++){%>
-        <li><%=elos.test[i] %></li>
-        <%console.log(elos);%>
-        <% } %>
-      </ul>
+  <% for(var i=0; i<elos.test.length; i++) {%>
+  	<li><%= elo.test[i] %></li>
+  <% } %>
+  </ul>
       <thead><h3> Ranked Players </h3></thead>
         <table id="rank-table">
         </table>
