@@ -1,5 +1,9 @@
+/*globals util*/
+var MongoClient = require('mongodb').MongoClient;
+var Server = require('mongodb').Server;
 var express = require('express');
 var app = express();
+var url = 'mongodb://sonicfangs:password@ds019053.mlab.com:19053/smash_data';
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname));
@@ -8,8 +12,12 @@ const PORT = 5000;
 app.set('port', (process.env.PORT || 5000));
 
 app.get("/", function(req, res){
-  var elos = util.eloCalc();
-  res.render('index',elos);
+
+res.render('index');
+});
+
+app.get("/regular", function(req, res){
+  res.send('lawl');
 });
 
 app.get("/index", function(req, res){

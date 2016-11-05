@@ -9,66 +9,97 @@ var url = 'mongodb://sonicfangs:password@ds019053.mlab.com:19053/smash_data';
 var eloCalc = function(){
 
   var matchList = {};
-
+  var elos = [];
+  var tempPlayerDoc;
   MongoClient.connect(url, function(err, db){
     if(err)
     console.log(err);
-    var col = db.collection("match_history");
+    var matchHistory = db.collection("match_history");
     var util = db.collection("util");
-    var player_info = db.collection("player_info");
+    var playerInfo = db.collection("player_info");
     util.find({"week_number":{$exists:true}}).toArray(function(err,weekNumber){
-      if(weekNumber == null)
-      console.log(err);
-      col.find({"week":{$exists:true}}).toArray(function(err, result){
-        if(result == null)
+      if(weekNumber == null){
         console.log(err);
+      }
+      elos.push(0);
+      playerInfo.find().forEach(function(t){
+        elos.push(1200);
+      });
+      matchHistory.find().forEach(function(err, match){
+        if(match == null){
+          console.log(err);
+        }
         else{
-          player_info.find().toArray(function(err,playerDoc){
-            if(playerDoc == null)
-            console.log(err);
-            else{
-              console.log(playerDoc);
-              var elos = [];
-              elos.push(0);
-              for(var i = 1; i < playerDoc.length; i++){
-                elos.push(playerDoc[i].elo);
-              }
-              console.log(elos);
-              for(var i = 0; i < result.length; i++){
+          // if you say you can't do it, you won't
+          // for each matchHistory, add player stats and
+          //  calc elo and change the elos for those two players
+          // for each
+            
+            var winnerTemp = match.winner_id;
+            var loserTemp = match.loser_id;
+            console.log(winnerTemp + ":" + loserTemp);
+            var eloWinner = 0, eloLoser = 0;
+            playerInfo.find({"player_id":winnerTemp}).next(function(err, result){
+              eloWinner = result.elo;
+              console.log("L");
+            });
+            console.log(eloWinner);
+            var expectedScoreWinner = 1/(1+Math.pow(10,(eloLoser - eloWinner)/400));
+            var expectedScoreLoser=1/(1+Math.pow(10,(eloWinner-eloLoser)/400));
+            console.log(expectedScoreWinner + ":" + expectedScoreLoser);
+            //variables for determining the player's performance
+            var fdk = match.winner_falls/match.winner_kos;
+            var kdf = match.loser_kos/match.loser_falls;
 
-                var matchJSON = result[i];
-                console.log(result[i].winner_id + ":" + result[i].loser_id);
-                console.log(result[i]);
-                console.log(elos);
-                var winnerTemp = result[i].winner_id;
-                var loserTemp = result[i].loser_id;
-                var expectedScoreWinner=1/(1+Math.pow(10,(elos[loserTemp]-elos[winnerTemp])/400));
-                var expectedScoreLoser=1/(1+Math.pow(10,(elos[winnerTemp]-elos[loserTemp])/400));
-                //variables for determining the player's performance
-                var fdk = matchJSON.winner_falls/matchJSON.winner_kos;
-                var kdf = matchJSON.loser_kos/matchJSON.loser_falls;
-                //calculate new player's elo
-                elos[winnerTemp] = Math.floor(elos[winnerTemp] + 32*(1-expectedScoreWinner)*(1.75-fdk));
-                elos[loserTemp] = Math.floor(elos[loserTemp] + 32*(0-expectedScoreLoser)*(1.75-kdf));
-              }
-              //console.log(matchList);
+            playerInfo.update({"player_id": winnerTemp},{$set:{"elo":eloWinner}});
 
-              console.log(elos);
-              db.close();
-              var test = {
-                test:[]
-              };
-              test.test = elos;
+          //
+          // var matchJSON = result;
+          // var winnerTemp = result.winner_id;
+          // var loserTemp = result.loser_id;
+          // var eloWinner = 0, eloLoser = 0;
+          // playerInfo.find().toArray(function(err, player){
+          //   console.log(player);
+          // });
+          //
+          // playerInfo.find({"player_id":loserTemp}).toArray(function(err, player){
+          //   eloLoser = player.elo;
+          //   console.log(eloLoser);
+          // });
+          // console.log(eloWinner + ":" + eloLoser);
+          // var expectedScoreWinner=1/(1+Math.pow(10,(elos[loserTemp]-elos[winnerTemp])/400));
+          // var expectedScoreLoser=1/(1+Math.pow(10,(elos[winnerTemp]-elos[loserTemp])/400));
+          // //variables for determining the player's performance
+          // var fdk = matchJSON.winner_falls/matchJSON.winner_kos;
+          // var kdf = matchJSON.loser_kos/matchJSON.loser_falls;
+          // //calculate new player's elo
+          // elos[winnerTemp] = Math.floor(elos[winnerTemp] + 32*(1-expectedScoreWinner)*(1.75-fdk));
+          // elos[loserTemp] = Math.floor(elos[loserTemp] + 32*(0-expectedScoreLoser)*(1.75-kdf));
 
-              console.log(test);
-              // console.log(matchList);
-            }
-          });
         }
       });
+
+
+    // playerInfo.find().toArray(function(err, playerDoc){
+    //     console.log(playerDoc);
+    // });
+
+    db.close();
+  });
+});
+}
+
+var playerReset = function(){
+  MongoClient.connect(url, function(err, db){
+    var playerInfo = db.collection('player_info');
+    playerInfo.updateMany({"player_id":{$exists: true}},{$set:{"elo":1200,"career_kos":0,"career_falls":0,"career_wins":0,"career_losses":0}});
+    playerInfo.find().toArray(function(err, playerDoc){
+      // console.log(playerDoc);
+      db.close();
     });
   });
 }
+
 // //
 // var matchNew = function(matchJSON){
 //   var winnerTemp = matchJSON.winner_id;
@@ -120,6 +151,8 @@ var eloCalc = function(){
 //    });
 //  }
 
+
+playerReset();
 eloCalc();
 // matchNew({
 //   "week": 4,

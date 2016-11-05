@@ -4,16 +4,15 @@
 
 <title>Smash Weekly</title>
 <head>
-<link rel="icon" href="icons\favicon.ico" >
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<!--<script src="scripts\data.js"></script>-->
-<!--<script src="scripts\elo_calc.1.0.0.js"></script>-->
-<!--<script src="scripts\rank-data-injector.1.0.0.js"></script>-->
-
-<link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="icon" href="icons\favicon.ico" >
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <!--<script src="scripts\data.js"></script>-->
+  <!--<script src="scripts\elo_calc.1.0.0.js"></script>-->
+  <!--<script src="scripts\rank-data-injector.1.0.0.js"></script>-->
+  <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
- <div class="nav-bar">
+  <div class="nav-bar">
     <ul class="nav-list">
       <li><a href=""> <img class="project-m" src="src\project-m-logo.png" /></a></li>
       <li><a class="list-element active" href="">Home</a></li>
@@ -22,43 +21,50 @@
       <li><a class="list-element" href="#">Archive</a></li>
     </ul>
   </div>
-<div class="main-content">
-  <div class="section">
-    <div class="table-container">
-      <ul>
-  <% for(var i=0; i<elos.test.length; i++) {%>
-  	<li><%= elo.test[i] %></li>
-  <% } %>
-  </ul>
-      <thead><h3> Ranked Players </h3></thead>
+  <div class="main-content">
+    <div class="section">
+      <div class="table-container">
+        
+        <thead><h3> Ranked Players </h3></thead>
         <table id="rank-table">
+          <tr class="rank-table-row">
+            <th> <em> Rank </em> </th>
+            <th> <em> Players </em> </th>
+            <th class="table-mains"> <em> Mains </em> </th>
+            <th> <em> Wins </em> </th>
+            <th> <em> Losses </em> </th>
+            <th> <em> Win % </em> </th>
+            <th> <em> KO's </em> </th>
+            <th> <em> Falls </em> </th>
+            <th> <em> Elo </em> </th>
+          </tr>
         </table>
-      <tfoot> *Players are given official ranks after 6 provisional games* </tfoot>
-    </div>
+        <tfoot> *Players are given official ranks after 6 provisional games* </tfoot>
+      </div>
 
-    <div class="table-container">
-      <thead><h3> Unranked Players </h3></thead>
+      <div class="table-container">
+        <thead><h3> Unranked Players </h3></thead>
         <table id="unrank-table">
         </table>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <h2 class="archive-heading"> Smash Archives </h2>
-  	<h3 class="summary-heading"> Project M Weeklies #1 </h3>
-  	<p>	Participants: 5<br>
-  	<a href="tour1.html" class="link"> Summary </a></p>
+    <div>
+      <h2 class="archive-heading"> Smash Archives </h2>
+      <h3 class="summary-heading"> Project M Weeklies #1 </h3>
+      <p>	Participants: 5<br>
+        <a href="tour1.html" class="link"> Summary </a></p>
 
-  	<h3 class="summary-heading"> Project M Weeklies #2</h3>
-  	<p> Participants: 5<br>
-  	<a href="tour2.html" class="link">Summary</a></p>
-  	<h3 class="summary-heading">Project M Weeklies #3</h3>
-  	<p> Participants: 6<br>
-  	<a href="tour3.html" class="link">Summary</a></p>
+        <h3 class="summary-heading"> Project M Weeklies #2</h3>
+        <p> Participants: 5<br>
+          <a href="tour2.html" class="link">Summary</a></p>
+          <h3 class="summary-heading">Project M Weeklies #3</h3>
+          <p> Participants: 6<br>
+            <a href="tour3.html" class="link">Summary</a></p>
 
-  </div>
-</div>
+          </div>
+        </div>
 
-</body>
-<footer>(c) Brian Cabigon 2016 </footer>
-</html>
+      </body>
+      <footer>(c) Brian Cabigon 2016 </footer>
+      </html>
