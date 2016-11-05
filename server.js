@@ -16,10 +16,6 @@ app.get("/", function(req, res){
 res.render('index');
 });
 
-app.get("/regular", function(req, res){
-  res.send('lawl');
-});
-
 app.get("/index", function(req, res){
   res.render('index');
 });
