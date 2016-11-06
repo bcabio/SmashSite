@@ -1,9 +1,9 @@
 /*globals util*/
 var MongoClient = require('mongodb').MongoClient;
-var Server = require('mongodb').Server;
+// var Server = require('mongodb').Server;
 var express = require('express');
 var app = express();
-var url = 'mongodb://sonicfangs:password@ds019053.mlab.com:19053/smash_data';
+// var url = 'mongodb://sonicfangs:password@ds019053.mlab.com:19053/smash_data';
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname));
