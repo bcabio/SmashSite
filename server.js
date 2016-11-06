@@ -1,5 +1,5 @@
 /*globals util*/
-var MongoClient = require('mongodb').MongoClient;
+// var MongoClient = require('mongodb').MongoClient;
 // var Server = require('mongodb').Server;
 var express = require('express');
 var app = express();
