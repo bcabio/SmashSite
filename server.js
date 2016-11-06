@@ -12,8 +12,7 @@ const PORT = 5000;
 app.set('port', (process.env.PORT || 5000));
 
 app.get("/", function(req, res){
-
-res.render('index');
+  res.render('index');
 });
 
 app.get("/index", function(req, res){
