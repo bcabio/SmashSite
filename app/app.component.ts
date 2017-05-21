@@ -14,6 +14,7 @@ import { Component } from '@angular/core';
             </div>
 
             <div class="table-container">
+                <thead><h3> Unranked Players </h3></thead>
                 <unrank-table></unrank-table>
             </div>
         </div>

@@ -41,9 +41,12 @@ playerList: Array<Player> = [];
 	playerService.getUnrankedPlayers().subscribe(
 		res => {
 			let tempPlayer: Player;
-			for(var k in res){
-				tempPlayer = res[k];
-				this.playerList.push(tempPlayer);
+			let i = 1;
+      for(var k in res){
+        tempPlayer = res[k];
+        tempPlayer["rank"] = i;
+        this.playerList.push(tempPlayer);
+        i++;
 			}
 		}, 
 		error => console.error('Error: ')

@@ -20,7 +20,7 @@ import { Player, PlayerService } from './player.service';
               	<td> <a class="link"> {{playerData.player_name}} </a> </td>
               	<td>
               	 <img *ngFor="let characterImage of playerData.mains" class="icon" src="icons/{{characterImage}}.png" alt="{{characterImage}}"> 
-              	</td>
+              	</td> 
               	<td> {{playerData.career_wins}} </td>
               	<td> {{playerData.career_losses}} </td>
               	<td> {{playerData.career_win_percent}}% </td>
@@ -41,9 +41,12 @@ playerList: Array<Player> = [];
 	playerService.getRankedPlayers().subscribe(
 		res => {
 			let tempPlayer: Player;
+			let i = 1;
 			for(var k in res){
 				tempPlayer = res[k];
+				tempPlayer["rank"] = i;
 				this.playerList.push(tempPlayer);
+				i++;
 			}
 		}, 
 		error => console.error('Error: ')
